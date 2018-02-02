@@ -2,16 +2,17 @@ import React, { Component } from "react";
 import { Header } from "./Header/header";
 import { Search } from "./SearchBar/search";
 import "./App.css";
-import { Grid, Container, Segment } from "semantic-ui-react";
+import { Grid, Container, Segment, Button, Icon } from "semantic-ui-react";
 
 //Components
 import CardMovie from "./Movies/CardMovie";
+import Footer from "./Footer/footer";
 
 class App extends Component {
   state = {
     movies: [],
-    number: 0,
-    colorButton: "red"
+    colorButton: "red",
+    rowsAppear: 2
   };
 
   componentDidMount() {
@@ -51,25 +52,35 @@ class App extends Component {
   };
 
   render() {
-    console.log("movies: ", this.state.movies);
+    const { rowsAppear } = this.state;
     return (
       <div>
         <Container>
           <Segment inverted>
             <Header />
             <Search />
-            <Grid columns="three" style={{ marginLeft: 15 }}>
-              {this.state.movies.map((rowMovies, index) => (
-                <Grid.Row key={index}>
-                  {rowMovies.map((movie, index) => (
-                    <Grid.Column key={index}>
-                      <CardMovie movie={movie} />
-                    </Grid.Column>
-                  ))}
-                </Grid.Row>
-              ))}
+            <Grid columns="three" style={{ marginLeft: 20 }}>
+              {this.state.movies
+                .slice(0, rowsAppear)
+                .map((rowMovies, index) => (
+                  <Grid.Row key={index}>
+                    {rowMovies.map((movie, index) => (
+                      <Grid.Column key={index}>
+                        <CardMovie movie={movie} />
+                      </Grid.Column>
+                    ))}
+                  </Grid.Row>
+                ))}
+              <Grid.Row>
+                <Grid.Column />
+                <Grid.Column />
+                <Grid.Column textAlign="right">
+                  <Button>Show more</Button>
+                </Grid.Column>
+              </Grid.Row>
             </Grid>
           </Segment>
+          <Footer />
         </Container>
       </div>
     );

@@ -1,0 +1,22 @@
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 25px;
+  text-align: left;
+  border-bottom-color: brown;
+  border-bottom: 01px;
+}
+
+h1 {
+  font-family: cursive;
+  font-size: 7rem;
+  color: crimson;
+}
+
+@media (min-width: 992px) {
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}

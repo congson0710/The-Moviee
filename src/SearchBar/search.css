@@ -1,0 +1,23 @@
+.searchBar {
+  position: relative;
+  font-family: "Open Sans", sans-serif;
+  width: 100%;
+  padding: 20px 0 20px 40px;
+  border: 2px solid #bdbdbd;
+  color: #000;
+  outline: none;
+  transition: all 0.35s ease-out;
+}
+
+::placeholder {
+  color: #000;
+  transition: all 0.35s ease-out;
+}
+
+.searchIcon {
+  position: absolute;
+  z-index: 99;
+  margin: 18px 0 0 10px;
+  height: 200;
+  width: 200;
+}
